@@ -12,20 +12,27 @@
 ; ##  8. Um den Bot zu beenden F3 reloadet den Bot                       ##
 ; ##                                                                     ##
 ; #########################################################################
- 
+
 ; #########################################################################
 ; ##                                                                     ##
 ; ##                        Starten des Bots: ALT + e                    ##
 ; ##                        Reload des Bots:  F3                         ##
 ; ##                                                                     ##
 ; #########################################################################
-                        !e:: while True { Main() } return
-                        F3:: Reload return 
+!e:: 
+    while True 
+    { 
+        Main()
+    } 
+return
+
+F3:: Reload return 
 ; #########################################################################
 ; ##                                                                     ##
 ; ##                        Weitere Entwicklungshotkeys                  ##
 ; ##                                                                     ##
 ; #########################################################################
+
 ; DynTurnX(-633)
 F4:: LoopWalk(30, "w") return 
 ; Mausumkehr
@@ -79,7 +86,7 @@ DynTurnX(a){
     InOutGame()
     Sleep, 500
     MouseMove, %a%, 0 , 2, R
-    return -a
+return -a
 }
 
 DynTurnY(a){
@@ -87,7 +94,7 @@ DynTurnY(a){
     InOutGame()
     Sleep, 500
     MouseMove, 0 , %a%, 2, R
-    return -a
+return -a
 }
 
 ; Figur führt eine gewisse Taste wiederholt aus und umgekehrt; s = Schrittweite: number, forward = Taste für welche Richtung: string, backward = Taste um auf Ausgangspunkt zu kommen(Umkehrung): string
@@ -145,24 +152,25 @@ ZuRechteKiste(){
     DynTurnY(400)
     InOutGame()
     ; Nimmt die Kiste
-    Sleep 500 
+    Sleep 400 
     Send f
-    Sleep 800
+    Sleep 400
     DynTurnX(-43)
     Sleep 100
-    DynTurnY(-262)
+    DynTurnY(-263)
 
     ; Wieder zurück zum Durchbruch
     Sleep 500
     Click middle
     Sleep 2500
+    LoopWalk(6, "w")
     DynTurnX(450)
     LoopWalk(30, "w")
     DynTurnX(-633)
     LoopWalk(58 , "w")
-    DynTurnX(-633)
+    DynTurnX(-630)
     Sleep 100
-    LoopWalk(53, "w")
+    LoopWalk(52, "w")
     TuereSpace(8000, 6000)
 
 }
@@ -170,6 +178,6 @@ ZuRechteKiste(){
 Main(){
     Durchbruch()
     ZuRechteKiste()
-    return 
+return 
 }
 
